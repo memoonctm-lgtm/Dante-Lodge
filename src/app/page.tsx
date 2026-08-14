@@ -1,6 +1,13 @@
 import { ClientLayout } from "@/components/layout/ClientLayout";
 import { Hero } from "@/components/home/Hero";
 import { PillarsSection } from "@/components/home/PillarsSection";
+import { TestimonialsSection } from "@/components/home/TestimonialsSection";
+import { EventsSection } from "@/components/home/EventsSection";
+import { MissionValuesSection } from "@/components/home/MissionValuesSection";
+import { BenefitsSection } from "@/components/home/BenefitsSection";
+import { StatsSection } from "@/components/home/StatsSection";
+import { BlogSection } from "@/components/home/BlogSection";
+import { CommitmentSection } from "@/components/home/CommitmentSection";
 import { CTASection } from "@/components/home/CTASection";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -29,6 +36,13 @@ export default function HomePage() {
           </AnimatedSection>
         </div>
       </section>
+      <TestimonialsSection />
+      <EventsSection />
+      <MissionValuesSection />
+      <BenefitsSection />
+      <StatsSection />
+      <BlogSection />
+      <CommitmentSection />
       <CTASection />
     </ClientLayout>
   );
