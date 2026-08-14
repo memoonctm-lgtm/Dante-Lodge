@@ -1,22 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { timingSafeEqual } from "crypto";
 import {
   ADMIN_COOKIE,
   SESSION_DURATION_SECONDS,
   createSessionToken,
   getAdminCredentials,
-} from "@/lib/auth";
+  safeCompare,
+} from "@/lib/auth-server";
 
-function safeCompare(a: string, b: string): boolean {
-  try {
-    const bufA = Buffer.from(a);
-    const bufB = Buffer.from(b);
-    if (bufA.length !== bufB.length) return false;
-    return timingSafeEqual(bufA, bufB);
-  } catch {
-    return false;
-  }
-}
+export const runtime = "nodejs";
 
 export async function POST(request: NextRequest) {
   const credentials = getAdminCredentials();

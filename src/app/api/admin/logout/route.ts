@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
-import { ADMIN_COOKIE } from "@/lib/auth";
+import { ADMIN_COOKIE } from "@/lib/auth-edge";
+
+export const runtime = "nodejs";
 
 export async function POST() {
   const response = NextResponse.json({ success: true });

@@ -25,19 +25,6 @@ async function sign(data: string, secret: string): Promise<string> {
     .join("");
 }
 
-export async function createSessionToken(
-  username: string,
-  secret: string
-): Promise<string> {
-  const payload: SessionPayload = {
-    sub: username,
-    exp: Date.now() + SESSION_DURATION_SECONDS * 1000,
-  };
-  const payloadB64 = btoa(JSON.stringify(payload));
-  const signature = await sign(payloadB64, secret);
-  return `${payloadB64}.${signature}`;
-}
-
 export async function verifySessionToken(
   token: string,
   secret: string
@@ -54,20 +41,4 @@ export async function verifySessionToken(
   } catch {
     return false;
   }
-}
-
-export function getAdminCredentials() {
-  const username = process.env.ADMIN_USERNAME;
-  const password = process.env.ADMIN_PASSWORD;
-  const secret = process.env.ADMIN_SECRET;
-
-  if (!username || !password || !secret) {
-    return null;
-  }
-
-  if (secret.length < 32) {
-    return null;
-  }
-
-  return { username, password, secret };
 }
